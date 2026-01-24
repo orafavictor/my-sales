@@ -27,6 +27,8 @@
     "declaration": true,
     "declarationMap": true,
 
+    "typeRoots": [],
+
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": false,
@@ -50,7 +52,7 @@
 
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strictPropertyInitialization": true,
+    "strictPropertyInitialization": false,
 
     "esModuleInterop": true,
     "resolveJsonModule": true,
