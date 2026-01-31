@@ -1,25 +1,25 @@
 import { AppDataSource } from "shared/typeorm/data-source";
-import { Costumer } from "../entities/Costumer";
+import { Customer } from "../entities/Customer";
 
-export const costumersRepository = AppDataSource.getRepository(Costumer).extend({
-  async findByName(name: string): Promise<Costumer | null> {
-    const costumer  = await this.findOneBy({
+export const customersRepository = AppDataSource.getRepository(Customer).extend({
+  async findByName(name: string): Promise<Customer | null> {
+    const customer  = await this.findOneBy({
       name,
     });
-    return costumer;
+    return customer;
   },
 
-  async findById(id: number): Promise<Costumer | null> {
-    const costumer  = await this.findOneBy({
+  async findById(id: number): Promise<Customer | null> {
+    const customer  = await this.findOneBy({
       id,
     });
-    return costumer;
+    return customer;
   },
 
-  async findByEmail(email: string): Promise<Costumer | null> {
-    const costumer  = await this.findOneBy({
+  async findByEmail(email: string): Promise<Customer | null> {
+    const customer  = await this.findOneBy({
       email,
     });
-    return costumer;
+    return customer;
   },
 });
