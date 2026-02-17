@@ -25,6 +25,8 @@ export class AddCustomerIdToOrders1771341464984 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+      await queryRunner.dropForeignKey('orders', 'OrdersCustomer');
+      await queryRunner.dropColumn('orders', 'customer_id');
     }
 
 }
