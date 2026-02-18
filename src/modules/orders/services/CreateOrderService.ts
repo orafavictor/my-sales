@@ -1,6 +1,6 @@
 import { Product } from "modules/products/database/entities/Product";
 import { Order } from "../database/entities/Order";
-import { customersRepository } from "modules/costumers/database/repositories/CustomerRepositories";
+import { customersRepository } from "modules/customers/database/repositories/CustomerRepositories";
 import AppError from "shared/errors/AppError";
 import { productsRepositories } from "modules/products/database/repositories/ProductsRepositories";
 import { orderRepositories } from "../database/repositories/OrderRepositories";
