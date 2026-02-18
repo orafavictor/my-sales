@@ -7,7 +7,7 @@ import uploadConfig from 'config/upload';
 import express from 'express';
 import passwordRouter from 'modules/users/routes/PasswordRoutes';
 import profileRouter from 'modules/users/routes/ProfileRoutes';
-import customersRouter from 'modules/costumers/routes/CustomerRoutes';
+import customersRouter from 'modules/customers/routes/CustomerRoutes';
 import ordersRouter from 'modules/orders/routes/OrdersRoutes';
 
 const routes = Router();
