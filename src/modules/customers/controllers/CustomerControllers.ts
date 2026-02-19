@@ -7,8 +7,10 @@ import ShowCustomerService from "../services/ShowCustomerService";
 
 export default class Customer {
   async index(request: Request, response: Response): Promise<Response> {
+    const page = parseInt(request.query.page as string) || 1;
+    const limit = parseInt(request.query.limit as string) || 10;
     const listCustomer = new ListCustomerService();
-    const customers = await listCustomer.execute();
+    const customers = await listCustomer.execute(page, limit);
     return response.json(customers);
   }
 
