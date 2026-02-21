@@ -1,6 +1,6 @@
 import AppError from "shared/errors/AppError";
-import { customersRepository } from "../database/repositories/CustomerRepositories";
-import { Customer } from "../database/entities/Customer";
+import { customersRepository } from "../infra/database/repositories/CustomerRepositories";
+import { Customer } from "../infra/database/entities/Customer";
 
 interface IUpdateCustomer {
   id: number;

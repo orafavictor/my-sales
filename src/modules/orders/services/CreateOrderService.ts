@@ -1,9 +1,9 @@
-import { Product } from "modules/products/database/entities/Product";
-import { Order } from "../database/entities/Order";
-import { customersRepository } from "modules/customers/database/repositories/CustomerRepositories";
+import { Product } from "modules/products/infra/database/entities/Product";
+import { Order } from "../infra/database/entities/Order";
+import { customersRepository } from "modules/customers/infra/database/repositories/CustomerRepositories";
 import AppError from "shared/errors/AppError";
-import { productsRepositories } from "modules/products/database/repositories/ProductsRepositories";
-import { orderRepositories } from "../database/repositories/OrderRepositories";
+import { productsRepositories } from "modules/products/infra/database/repositories/ProductsRepositories";
+import { orderRepositories } from "../infra/database/repositories/OrderRepositories";
 
 interface ICreateOrder {
   customer_id: string;
@@ -40,7 +40,7 @@ export class CreateOrderService {
     }
 
     const quantityAvailable = products.filter(product => {
-      existsProducts.filter(productExistent => productExistent.id === product.id)[0].
+      existsProducts.filter((productExistent: any) => productExistent.id === product.id)[0].
       quantity < product.quantity;
     });
 
@@ -51,7 +51,7 @@ export class CreateOrderService {
     const serializedProducts = products.map(product => ({
       product_id: product.id,
       quantity: product.quantity,
-      price: existsProducts.filter(p => p.id === product.id)[0].price,
+      price: existsProducts.filter((p: any) => p.id === product.id)[0].price,
     }))
 
     const order = await orderRepositories.createOrder({
@@ -61,10 +61,10 @@ export class CreateOrderService {
 
     const { order_products } = order;
 
-    const updatedProductQuantity = order_products.map(product => ({
+    const updatedProductQuantity = order_products.map((product: any) => ({
       id: product.product_id,
       quantity:
-        existsProducts.filter(p => p.id === product.product_id)[0].quantity -
+        existsProducts.filter((p: any) => p.id === product.product_id)[0].quantity -
         product.quantity,
     }));
 
