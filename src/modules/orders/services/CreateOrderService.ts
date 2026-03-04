@@ -1,9 +1,9 @@
 import { Product } from "modules/products/infra/database/entities/Product";
 import { Order } from "../infra/database/entities/Order";
-import { customersRepository } from "modules/customers/infra/database/repositories/CustomerRepositories";
 import AppError from "shared/errors/AppError";
 import { productsRepositories } from "modules/products/infra/database/repositories/ProductsRepositories";
 import { orderRepositories } from "../infra/database/repositories/OrderRepositories";
+import CustomersRepository from "modules/customers/infra/database/repositories/CustomerRepositories";
 
 interface ICreateOrder {
   customer_id: string;
@@ -12,6 +12,7 @@ interface ICreateOrder {
 
 export class CreateOrderService {
   async execute({customer_id, products}: ICreateOrder): Promise<Order> {
+    const customersRepository = new CustomersRepository();
     const customerExists = await customersRepository.findById(
       Number(customer_id),
     );
