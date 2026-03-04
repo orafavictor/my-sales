@@ -1,12 +1,19 @@
 import AppError from "shared/errors/AppError";
 import { ICustomerRepositories } from "../domain/repositories/ICustomerRepositories";
+import { inject, injectable } from "tsyringe";
 
 interface IDeleteCustomer {
   id: number;
 }
 
+@injectable()
+
 export default class DeleteCustomerService {
-  constructor(private customersRepository: ICustomerRepositories) {}
+  constructor(
+    @inject('CustomerRepositories')
+    private customersRepository: ICustomerRepositories
+
+  ) {}
   public async execute({ id }: IDeleteCustomer): Promise<void> {
     const customer = await this.customersRepository.findById(id);
 
