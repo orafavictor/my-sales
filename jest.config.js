@@ -1,8 +1,9 @@
 module.exports = {
   clearMocks: true,
-  // collectCoverage: true,
-  // coverageDirectory: "coverage",
-  // coverageProvider: "v8",
+  collectCoverage: true,
+  collectCoverageFrom: ['<rootDir>/src/modules/**/services/*.ts'],
+  coverageDirectory: "coverage",
+  coverageProvider: "v8",
   preset: 'ts-jest',
   testEnvironment: "node",
   moduleNameMapper: {
